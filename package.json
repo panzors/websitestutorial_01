@@ -4,6 +4,7 @@
   "description": "A tutorial of how to get a website up and running using nodejs",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "test"
   },
   "repository": {
