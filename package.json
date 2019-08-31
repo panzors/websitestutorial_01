@@ -1,0 +1,26 @@
+{
+  "name": "websitestutorial_01",
+  "version": "1.0.0",
+  "description": "A tutorial of how to get a website up and running using nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panzors/websitestutorial_01.git"
+  },
+  "keywords": [
+    "tutorial",
+    "website"
+  ],
+  "author": "mcpanzors",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panzors/websitestutorial_01/issues"
+  },
+  "homepage": "https://github.com/panzors/websitestutorial_01#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
