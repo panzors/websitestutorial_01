@@ -7,10 +7,9 @@ const app = new Vue({
         user: undefined
     },
     methods: {
-        shuffle: function() {
-            this.cards = [{
-                raw: "H1"
-            }];
+        shuffle: async function() {
+            const result =  await axios.get('game/getCards');
+            this.cards = result.data.cards;
         },
         signIn: function() {
             this.user = {

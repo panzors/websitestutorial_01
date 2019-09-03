@@ -26,9 +26,10 @@
                     </div>
                 </section>
                 <section class="game">
+                    <button v-on:click="shuffle">Shuffle</button>
                     <ul>
                         <li v-for="card in cards">
-                            {{ card.raw }}
+                            {{ card.suite }} {{ card.value }}
                         </li>
                     </ul>
                 </section>
