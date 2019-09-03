@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "test",
-    "server": "nodemon index.js",
-    "build": "webpack --config webpack.config.js"
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +27,6 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "nodemon": "^1.19.1"
   }
 }

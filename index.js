@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 
 const routes = require('./source/routes');
 
-app.use(express.static('dist'));
+app.use(express.static('public'));
 
 routes(app);
 
