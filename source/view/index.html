@@ -1,15 +1,43 @@
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="assets/home.css">
-</head>
-<body>
-    <div id="root">
-        <h1>{{title}}</h1>
-        <p>{{description}}</p>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="./home.js"></script>
-</body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="assets/home.css">
+    </head>
+    <body>
+        <div id="root">
+            <div class="banner">
+                <div class="title">
+                    <h1>Everyday we shuffling</h1>
+                </div>
+                <div class="account">
+                    <div class="signed-in" v-if="!!user">
+                        <span>Hello {{user.name}}</span>
+                    </div>
+                    <div class="empty" v-else>
+                        <button v-on:click="signIn">Sign in</button>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <section class="welcome">
+                    <div>
+                        <h2>Hello world</h2>
+                        <div>Some explaination text on how this all fits
+                            together</div>
+                    </div>
+                </section>
+                <section class="game">
+                    <ul>
+                        <li v-for="card in cards">
+                            {{ card.raw }}
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./home.js"></script>
+    </body>
 
 </html>

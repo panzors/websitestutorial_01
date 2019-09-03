@@ -1,14 +1,26 @@
 console.log('render home controller');
 
-new Vue({
+const app = new Vue({
     el: '#root',
     data: {
-        title: 'hello world',
-        description: 'testing 123'
+        cards: [],
+        user: undefined
     },
     methods: {
-        
-
+        shuffle: function() {
+            this.cards = [{
+                raw: "H1"
+            }];
+        },
+        signIn: function() {
+            this.user = {
+                name: 'bob stevens'
+            };
+        }
+    },
+    created: function() {
+        this.cards = [{
+            raw: "H1"
+        }];
     }
-
-})
+});
