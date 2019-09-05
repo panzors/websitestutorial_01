@@ -17,6 +17,7 @@ const app = new Vue({
             };
         }
     },
+    
     created: function() {
         this.cards = [{
             raw: "H1"
