@@ -1,11 +1,21 @@
 <html>
     <head>
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/home.css">
     </head>
-    <body>
+    <body style="margin:0">
         <div id="root">
-            <div class="banner">
-                <div class="title">
+            <header class="mdc-top-app-bar">
+                <div class="mdc-top-app-bar__row">
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                        <button class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button><span class="mdc-top-app-bar__title">Every day we shuffling</span> </section>
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                    </section>
+                </div>
+
+                <!-- <div class="title">
                     <h1>Everyday we shuffling</h1>
                 </div>
                 <div class="account">
@@ -13,11 +23,11 @@
                         <span>Hello {{user.name}}</span>
                     </div>
                     <div class="empty" v-else>
-                        <button v-on:click="signIn">Sign in</button>
+                        <button class="mdc-button" v-on:click="signIn">Sign in</button>
                     </div>
-                </div>
-            </div>
-            <div class="content">
+                </div> -->
+            </header>
+            <div class="mdc-top-app-bar--fixed-adjust">
                 <section class="welcome">
                     <div>
                         <h2>Hello world</h2>
@@ -26,7 +36,7 @@
                     </div>
                 </section>
                 <section class="game">
-                    <button v-on:click="shuffle">Shuffle</button>
+                    <button class="mdc-button" v-on:click="shuffle">Shuffle</button>
                     <ul>
                         <li v-for="card in cards">
                             {{ card.suite }} {{ card.value }}
