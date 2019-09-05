@@ -24,7 +24,8 @@
   "homepage": "https://github.com/panzors/websitestutorial_01#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
