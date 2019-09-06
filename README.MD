@@ -18,3 +18,9 @@ Please let me know if you have feedback for this, I'd like to know what is helpf
 4. Typescript
 5. Logging
 6. STATE MANAGEMENT WHICH I'M WORKING ON MYSELF
+
+
+### TODOS (EVERYTHING)
+1. Remove javascript express and replace with typescript
+1. Build a unit test suite for purchasing unique deck of cards after customisation
+1. Change css to sass, which makes component building easier (maybe)
