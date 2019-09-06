@@ -3,9 +3,9 @@ const morgan = require('morgan');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const winston = require('./source/helpers/logger');
+const winston = require('./src/helpers/logger');
 const logger= winston.getLogger('express');
-const routes = require('./source/routes');
+const routes = require('./src/routes');
 
 app.use(express.static('public'));
 app.use(morgan({"stream": winston.stream }));
