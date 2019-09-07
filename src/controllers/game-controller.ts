@@ -1,11 +1,10 @@
 import {Express, Request, Response } from 'express';
-import {shuffle} from '../services/deck';
+import {randomDeck} from '../services/game-service';
 
 export function routes(app: Express) {
-    app.get('/game/getcards', (request: Request, response: Response) => {
-        response.setHeader('Content-Type', 'application/json');
+    app.get('/game/start', (request: Request, response: Response) => {
         response.json({
-            cards: shuffle()
+            cards: randomDeck()
         });
     })
 };

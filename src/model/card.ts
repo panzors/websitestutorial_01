@@ -1,6 +1,6 @@
 export class Card {
 
-    constructor(public suite: string, public value: string) {
+    constructor(public suite: string, public value: Number) {
 
     }
 

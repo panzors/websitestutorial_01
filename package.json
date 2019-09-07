@@ -4,10 +4,10 @@
   "description": "A tutorial of how to get a website up and running using nodejs",
   "main": "dist/express.js",
   "scripts": {
-    "start": "node .",
+    "start": "nodemon .",
     "build": "tsc",
     "test": "ts-node node_modules/jasmine/bin/jasmine",
-    "server": "nodemon index.js"
+    "server": "nodemon ."
   },
   "repository": {
     "type": "git",
