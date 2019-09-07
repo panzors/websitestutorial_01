@@ -1,4 +1,4 @@
-const winston = require('winston');
+import winston from 'winston';
 
 const logger = winston.createLogger({
     level: 'info',
@@ -15,15 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
     }));
 }
 
-function getLogger(name) {
+export function getLogger(name: string) {
     return logger;
-}
-
-module.exports = {
-    getLogger
 };
-module.exports.stream = {
-    write: function (message, encoding) {
-        logger.info(message);
-    }
+
+export function write(message: string) {
+    logger.info(message);
 };
