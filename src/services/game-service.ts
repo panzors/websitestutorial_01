@@ -1,10 +1,11 @@
 import { Card } from "../model/Card";
+import { Suite } from "../model/Suite";
 
-const suites: string[] = [
-    'Spade',
-    'Heart',
-    'Diamond',
-    'Clubs'
+const suites: Suite[] = [
+    Suite.Spade,
+    Suite.Heart,
+    Suite.Diamond,
+    Suite.Club,
 ]
 
 export function cleanDeck(): Card[] {
@@ -26,4 +27,8 @@ export function randomDeck(): Card[] {
     }
 
     return result;
+}
+
+export function play(playingCard: Card, gameState: Card[]){
+    const found = gameState.find((x) => { Suite})
 }

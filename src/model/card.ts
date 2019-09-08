@@ -1,11 +1,11 @@
-export class Card {
+import { Suite } from './Suite';
 
-    constructor(public suite: string, public value: Number) {
+export class Card {
+    constructor(public Suite: Suite, public Value: Number) {
 
     }
 
     get raw(): string {
-        return this.suite + this.value;
+        return this.Suite + this.Value.toString();
     }
-
 }

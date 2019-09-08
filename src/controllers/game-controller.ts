@@ -1,6 +1,7 @@
 import {Express, Request, Response } from 'express';
 import {randomDeck} from '../services/game-service';
 import * as encryptor from '../helpers/card-encryptor';
+import { Card } from 'src/model/card';
 
 export function routes(app: Express) {
     app.get('/game/start', (request: Request, response: Response) => {
@@ -17,5 +18,13 @@ export function routes(app: Express) {
         response.json({
             status: 'ok'
         })
-    })
+    });
+    
+    app.post('/game/play', (request: Request, response: Response) => {
+        const playedCard: Card = request.body.playedCard;
+
+
+        response.json()
+    });
+
 };
