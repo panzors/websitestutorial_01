@@ -7,19 +7,17 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Jasmine Test Suite",
-            "program": "${workspaceFolder}\\node_modules\\jasmine\\bin\\jasmine.js",
-            "args": [
-                "${relativeFile}"
-            ]
-
-
+            "name": "Launch Program",
+            "program": "${workspaceFolder}\\index.js"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}\\index.js"
-        }
+            "name": "Jasmine Current File",
+            "program": "${workspaceFolder}/node_modules/jasmine-ts/lib/index",
+            "args": ["${file}"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+       }
     ]
 }
