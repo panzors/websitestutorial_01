@@ -1,20 +1,13 @@
 import { Card, createCard } from '../model/Card';
+import * as ShaJs from 'sha.js';
 
-
-export function encrypt(content: string): string{
-    return content; // fix me later
-}
-
-export function decrypt(content: string) : string {
-    return content; // so sad wow
-}
-
-export function encryptCards(cards: Card[]): string{
+export function createSignature(cards: Card[]): string {
+    const sha = new ShaJs.sha256();
     const shortCodes = cards.map((x) => x.shortCode);
-    return this.encrypt(JSON.stringify(shortCodes));
+    return sha.update(JSON.stringify(shortCodes)).digest('hex');
 }
 
-export function decryptCards(content: string) : Card[] {
-    const shortCodes: string[] = JSON.parse(this.decrypt(content));
-    return shortCodes.map((x) => createCard(x));
+export function verifySignature(cards: Card[], signature: string) : Boolean {
+    const claimState = createSignature(cards);
+    return claimState === signature;
 }

@@ -8,29 +8,29 @@ export function routes(app: Express) {
         const cards = GameService.randomDeck();
         response.json({
             cards: cards,
-            deck: encryptor.encryptCards(cards) 
+            signature: encryptor.createSignature(cards) 
         });
     })
 
-    app.post('/game/validate', (request: Request, response: Response) => {
-        const deck = encryptor.decryptCards(request.body.deck);
-        const validationResult = GameService.validateDeck(deck);
-
-        response.status(200);
-        response.json({
-            status: validationResult ? 'valid' : 'invalid'
-        })
-    });
-    
     app.post('/game/play', (request: Request, response: Response) => {
+        // expecting body
+        // body.playedCard, body.cards, body.signature. 
+        // if you're claiming the cards are a certain type
         const playedCard: Card = createCard(request.body.playedCard);
-        const currentDeckState = encryptor.decryptCards(request.body.deck);
+        const cards = request.body.cards;
+        const validState = encryptor.verifySignature(request.body.cards, request.body.signature);
 
-        const playResponse = GameService.play(playedCard, currentDeckState);
-
-        response.json({
-            status: playResponse.Status,
-            deck: encryptor.encryptCards(playResponse.Deck)
-        });
+        if (!validState){
+            response.status(400); //bad request
+            response.statusMessage = 'Unable to comply with request, signature does not match card state.';
+            response.end();
+        } else {
+            const playResponse = GameService.play(playedCard, cards);   
+            response.json({
+                status: playResponse.Status,
+                deck : playResponse.Deck,
+                signature: encryptor.createSignature(playResponse.Deck)
+            });
+        }
     });
 };
