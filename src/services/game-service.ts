@@ -1,5 +1,6 @@
 import { Card } from "../model/Card";
 import { Suite } from "../model/Suite";
+import {GameResult} from "../model/GameResult";
 
 const suites: Suite[] = [
     Suite.Spade,
@@ -29,6 +30,18 @@ export function randomDeck(): Card[] {
     return result;
 }
 
-export function play(playingCard: Card, gameState: Card[]){
-    const found = gameState.find((x) => { Suite})
+export function play(playingCard: Card, gameState: Card[]) : GameResult{
+    const found = gameState.findIndex(() => { playingCard.Suite, playingCard.Value });
+    if (found != null && this.validateDeck()){
+        gameState.splice(found, 1);
+        return new GameResult('ok', gameState);
+    }
+
+    return new GameResult("broken", gameState);
+}
+
+export function validateDeck(deck: Card[]) : Boolean{
+    // implement me plz
+    return true;
+
 }
