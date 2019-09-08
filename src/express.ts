@@ -1,6 +1,7 @@
 import express, { Express, NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import routes from './routes';
+import { json } from 'body-parser';
 
 import { getLogger, write } from './helpers/logger';
 
@@ -17,8 +18,8 @@ function logErrors (err: Error, req: Request, res: Response, next: NextFunction)
     next(err);
   }
 
+app.use(json());
 app.use(logErrors);
-
 
 routes(app);
 
