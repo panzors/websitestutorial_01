@@ -1,7 +1,7 @@
 import {Express, Request, Response } from 'express';
 import {randomDeck} from '../services/game-service';
 import * as encryptor from '../helpers/card-encryptor';
-import { Card } from 'src/model/card';
+import { Card } from '../model/card';
 
 export function routes(app: Express) {
     app.get('/game/start', (request: Request, response: Response) => {

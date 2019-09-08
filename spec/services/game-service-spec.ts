@@ -1,6 +1,6 @@
 import 'jasmine';
 import * as GameService from '../../src/services/game-service';
-import { Card } from '../../src/model/card';
+import { Card, createCard } from '../../src/model/card';
 import { Suite } from '../../src/model/Suite';
 import { GameResult, GameResponseType } from '../../src/model/GameResult';
 
@@ -32,6 +32,26 @@ describe('game-service', function () {
     });
 
     it('play a single card', function() {
-        const deck = []
+        const deck = [ createCard('h11')];
+        const result = GameService.play(createCard('h11'), deck);
+
+        expect(result.Status).toBe('ok');
+        expect(result.Deck.length).toBe(0);
+    });
+
+    it ('play a card that does not exist in current deck', function() {
+        const deck = [createCard('s01')];
+        const result = GameService.play(createCard('h11'), deck);
+        expect(result.Status).toBe('broken');
+        expect(result.Deck.length).toBe(deck.length);
+    });
+    
+    it ('validate default decks has no duplicates',function() {
+        const deck = GameService.cleanDeck();
+        expect(GameService.validateDeck(deck)).toBe(true);        
+        
+        const randomDeck = GameService.randomDeck();
+        expect(GameService.validateDeck(randomDeck)).toBe(true);        
     })
-})
+});
+

@@ -31,8 +31,8 @@ export function randomDeck(): Card[] {
 }
 
 export function play(playingCard: Card, gameState: Card[]) : GameResult{
-    const found = gameState.findIndex(() => { playingCard.Suite, playingCard.Value });
-    if (found != null && this.validateDeck()){
+    const found = gameState.findIndex((x) => x.Suite == playingCard.Suite && x.Value == playingCard.Value);
+    if (found >= 0 && this.validateDeck()){
         gameState.splice(found, 1);
         return new GameResult('ok', gameState);
     }
