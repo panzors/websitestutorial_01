@@ -1,6 +1,6 @@
 import { Card } from "../model/Card";
 import { Suite } from "../model/Suite";
-import {GameResult} from "../model/GameResult";
+import {GameResult} from '../model/GameResult';
 
 const suites: Suite[] = [
     Suite.Spade,
@@ -32,7 +32,7 @@ export function randomDeck(): Card[] {
 
 export function play(playingCard: Card, gameState: Card[]) : GameResult{
     const found = gameState.findIndex((x) => x.Suite == playingCard.Suite && x.Value == playingCard.Value);
-    if (found >= 0 && this.validateDeck()){
+    if (found >= 0 && this.validateDeck(gameState)){
         gameState.splice(found, 1);
         return new GameResult('ok', gameState);
     }
@@ -40,8 +40,17 @@ export function play(playingCard: Card, gameState: Card[]) : GameResult{
     return new GameResult("broken", gameState);
 }
 
-export function validateDeck(deck: Card[]) : Boolean{
-    // implement me plz
-    return true;
+export function validateDeck(deck: Card[]) : Boolean {
+    const shortCodes = deck.map((x) => x.shortCode);
+    // right now there's only 52 cards in the deck not including the joker
+    if (shortCodes.length > 52) {
+        return false;
+    }
 
+    let unique = [...new Set(shortCodes)]; 
+    if (unique.length !== shortCodes.length){
+        return false;
+    } else {
+        return true;
+    }
 }

@@ -2,7 +2,6 @@ import 'jasmine';
 import * as GameService from '../../src/services/game-service';
 import { Card, createCard } from '../../src/model/card';
 import { Suite } from '../../src/model/Suite';
-import { GameResult, GameResponseType } from '../../src/model/GameResult';
 
 describe('game-service', function () {
     it('cleanDeck has 52', function () {
@@ -52,6 +51,18 @@ describe('game-service', function () {
         
         const randomDeck = GameService.randomDeck();
         expect(GameService.validateDeck(randomDeck)).toBe(true);        
+    });
+
+    it('validate decks with duplicates', function() {
+        const deck = [createCard('s1'), createCard('s1')];
+        expect(GameService.validateDeck(deck)).toBe(false);
+    });
+
+    it('validate deck with more than 52 cards', function() {
+        const deck = GameService.cleanDeck();
+        deck.push(createCard('h11'));
+
+        expect(GameService.validateDeck(deck)).toBe(false);
     })
 });
 
